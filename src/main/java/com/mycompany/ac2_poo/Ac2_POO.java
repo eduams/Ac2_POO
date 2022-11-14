@@ -39,6 +39,16 @@ public class Ac2_POO {
         int cilindradas;
         String combustivel;
         int consumo;
+        double distancia;
+        int placa;
+        String tipo;
+        double valor;
+        int portas;
+        int eixos;
+        int repeatedCondutores = 0;
+        int repeatedMotos = 0;
+        int repeatedCaminhoes = 0;
+        int repeatedCarros = 0;
         
         while(loopCheck == true){
             System.out.println("Digite o nome: ");
@@ -54,18 +64,23 @@ public class Ac2_POO {
             repeated++;
             System.out.println("Adicionar mais um condutor? (true ou false)");
             loopCheck = scanner.nextBoolean();
+            if (loopCheck == true){
+            repeatedCondutores = repeated;
+            }
         }
         
-        System.out.println("Adicionar veículos:");
-        loopCheck = true;
-        repeated = 0;
-
+        System.out.println("Adicionando veículos...");
         
         Moto moto[] = new Moto[10];
         Carro carro[] = new Carro[10];
         Caminhao caminhao[] = new Caminhao[10];
-
-        for (int x = 1;loopCheck == true; x++) {
+        
+        loopCheck = true;
+        System.out.println("Adicionar motos:");
+        for (int x = 0;loopCheck == true; x++) {
+            repeated = 0;
+            moto[x] = new Moto();
+            moto[x].setTipo("Moto");
             
             System.out.println("Digite o nome: ");
             nome = scanner.next();
@@ -79,19 +94,107 @@ public class Ac2_POO {
             System.out.println("Digite o consumo (km/l): ");
             consumo = scanner.nextInt();
             moto[x].setConsumo(consumo);
-            
+            System.out.println("Digite a distância em km percorrida pela moto: ");
+            distancia = scanner.nextDouble();
+            moto[x].setDistancia(distancia);
+            System.out.println("Digite sua placa: ");
+            placa = scanner.nextInt();
+            moto[x].setPlaca(placa);
+            System.out.println("Digite o valor do combustível (por litro): ");
+            valor = scanner.nextDouble();
+            moto[x].setValor(valor);
+           
             repeated++;
-            System.out.println("Adicionar mais um veiculo? (true ou false)");
+            System.out.println("Adicionar mais uma moto? (true ou false)");
             loopCheck = scanner.nextBoolean();
+            if (loopCheck == true) {
+                repeatedMotos = repeated;
+            }
+            
         }
         
-        
-        System.out.println("Relatório dos condutores ordenado por nome: ");
-        Relatorios.imprimeVeiculos(veiculosNomes, repeated);
+        loopCheck = true;        
+        System.out.println("Adicionar carros:");
+        for (int x = 0; loopCheck == true; x++) {
+            repeated = 0;
 
+            carro[x] = new Carro();
+            carro[x].setTipo("Carro");
+
+            System.out.println("Digite o nome: ");
+            nome = scanner.next();
+            veiculosNomes.add(carro[x].setNome(nome));
+            System.out.println("Digite o número de portas: ");
+            portas = scanner.nextInt();
+            carro[x].setQuantidadePortas(portas);
+            System.out.println("Digite o tipo de combustível: ");
+            combustivel = scanner.next();
+            carro[x].setCombustivel(combustivel);
+            System.out.println("Digite o consumo (km/l): ");
+            consumo = scanner.nextInt();
+            carro[x].setConsumo(consumo);
+            System.out.println("Digite a distância em km percorrida: ");
+            distancia = scanner.nextDouble();
+            carro[x].setDistancia(distancia);
+            System.out.println("Digite sua placa: ");
+            placa = scanner.nextInt();
+            carro[x].setPlaca(placa);
+            System.out.println("Digite o valor do combustível (por litro): ");
+            valor = scanner.nextDouble();
+            carro[x].setValor(valor);
+
+            repeated++;
+            System.out.println("Adicionar mais um carro? (true ou false)");
+            loopCheck = scanner.nextBoolean();
+            if (loopCheck == true) {
+                repeatedCarros = repeated;
+            }
+            
+        }
         
-         
-        
+        loopCheck = true;
+        System.out.println("Adicionar caminhões:");
+        for (int x = 0; loopCheck == true; x++) {
+            repeated = 0;
+
+            caminhao[x] = new Caminhao();
+            caminhao[x].setTipo("Caminhão");
+
+            System.out.println("Digite o nome: ");
+            nome = scanner.next();
+            veiculosNomes.add(caminhao[x].setNome(nome));
+            System.out.println("Digite o número de portas: ");
+            eixos = scanner.nextInt();
+            caminhao[x].setQuantidadeEixos(eixos); 
+            System.out.println("Digite o tipo de combustível: ");
+            combustivel = scanner.next();
+            caminhao[x].setCombustivel(combustivel);
+            System.out.println("Digite o consumo (km/l): ");
+            consumo = scanner.nextInt();
+            caminhao[x].setConsumo(consumo);
+            System.out.println("Digite a distância em km percorrida pela moto: ");
+            distancia = scanner.nextDouble();
+            caminhao[x].setDistancia(distancia);
+            System.out.println("Digite sua placa: ");
+            placa = scanner.nextInt();
+            caminhao[x].setPlaca(placa);
+            System.out.println("Digite o valor do combustível (por litro): ");
+            valor = scanner.nextDouble();
+            caminhao[x].setValor(valor);
+
+            repeated++;
+            System.out.println("Adicionar mais um caminhão? (true ou false)");
+            loopCheck = scanner.nextBoolean();
+            if (loopCheck == true) {
+                repeatedCaminhoes = repeated;
+            }
+        }
+
+        System.out.println("Relatório dos condutores ordenado por nome: ");
+        Relatorios.imprimeCondutores(condutores, repeatedCondutores + 1);
+        System.out.println("Relatório dos nomes dos veículos em ordem alfabética: ");
+        int repeatedSoma = (repeatedMotos + repeatedCarros + repeatedCaminhoes) + 3;
+        Relatorios.imprimeVeiculos(veiculosNomes, repeatedSoma);
         
     }
 }

@@ -22,6 +22,10 @@ public class Moto implements Veiculo {
     String tipo;
     String combustivel;
     
+    public Moto(){
+    
+    }
+    
     public double setCilindradas(double cilindradas) {
         return this.cilindradas = cilindradas;
     }
