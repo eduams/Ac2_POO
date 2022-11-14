@@ -19,8 +19,11 @@ public class Relatorios {
         }
     };
     
-    String imprimeVeiculos(){
-    return null;
+    public static void imprimeVeiculos(List<String> veiculo, int repeated) {
+        Collections.sort(veiculo);
+        for (int i = 0; i < repeated; i++) {
+            System.out.println(veiculo.get(i).toString());
+        }
     };
     String imprimeViagens(){
     return null;

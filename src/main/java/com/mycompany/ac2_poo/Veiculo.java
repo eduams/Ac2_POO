@@ -8,7 +8,7 @@ package com.mycompany.ac2_poo;
  *
  * @author eduar
  */
-public interface Veiculo {
+public interface Veiculo{
     String setNome(String nome);
     void setTipo(String tipo);    
     void setDistancia(double distancia);
@@ -25,4 +25,6 @@ public interface Veiculo {
     
     double getPlaca();
     void setPlaca(double placa);
+    
+
 }

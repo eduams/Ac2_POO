@@ -10,10 +10,10 @@ import com.mycompany.ac2_poo.Veiculo;
  *
  * @author eduar
  */
-public class Moto implements Veiculo {
-
-    double cilindradas;
+public class Caminhao implements Veiculo{
     
+    int quantidadeEixos;
+            
     double distancia;
     double valor;
     double consumo;
@@ -21,9 +21,9 @@ public class Moto implements Veiculo {
     String nome;
     String tipo;
     String combustivel;
-    
-    public double setCilindradas(double cilindradas) {
-        return this.cilindradas = cilindradas;
+
+    public void setQuantidadeEixos(int quantidadeEixos) {
+        this.quantidadeEixos = quantidadeEixos;
     }
     
     @Override
@@ -80,5 +80,4 @@ public class Moto implements Veiculo {
     public void setValor(double valor){
     this.valor = valor;
     }
-    
 }
