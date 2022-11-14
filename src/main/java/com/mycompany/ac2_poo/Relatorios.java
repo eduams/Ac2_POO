@@ -25,8 +25,11 @@ public class Relatorios {
             System.out.println(veiculo.get(i).toString());
         }
     };
-    String imprimeViagens(){
-    return null;
+    public static void imprimeViagens(List<Viagem> viagem, int repeated){
+        Collections.sort(viagem);
+        for (int i = 0; i < repeated; i++) {
+            System.out.println(viagem.get(i).toString());
+        }
     };
 
 }

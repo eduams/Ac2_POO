@@ -24,6 +24,7 @@ public class Ac2_POO {
         
         List<Condutor> condutores = new ArrayList();
         List<String> veiculosNomes = new ArrayList();
+        List<Viagem> viagens = new ArrayList();
 
         
         System.out.println("Adicionar condutores:");
@@ -42,13 +43,14 @@ public class Ac2_POO {
         double distancia;
         int placa;
         String tipo;
-        double valor;
+        double valor = 0;
         int portas;
         int eixos;
         int repeatedCondutores = 0;
         int repeatedMotos = 0;
         int repeatedCaminhoes = 0;
         int repeatedCarros = 0;
+        int repeatedViagem = 0;
         
         while(loopCheck == true){
             System.out.println("Digite o nome: ");
@@ -64,7 +66,7 @@ public class Ac2_POO {
             repeated++;
             System.out.println("Adicionar mais um condutor? (true ou false)");
             loopCheck = scanner.nextBoolean();
-            if (loopCheck == true){
+            if (loopCheck == false){
             repeatedCondutores = repeated;
             }
         }
@@ -107,7 +109,7 @@ public class Ac2_POO {
             repeated++;
             System.out.println("Adicionar mais uma moto? (true ou false)");
             loopCheck = scanner.nextBoolean();
-            if (loopCheck == true) {
+            if (loopCheck == false) {
                 repeatedMotos = repeated;
             }
             
@@ -146,7 +148,7 @@ public class Ac2_POO {
             repeated++;
             System.out.println("Adicionar mais um carro? (true ou false)");
             loopCheck = scanner.nextBoolean();
-            if (loopCheck == true) {
+            if (loopCheck == false) {
                 repeatedCarros = repeated;
             }
             
@@ -185,16 +187,56 @@ public class Ac2_POO {
             repeated++;
             System.out.println("Adicionar mais um caminhão? (true ou false)");
             loopCheck = scanner.nextBoolean();
-            if (loopCheck == true) {
+            if (loopCheck == false) {
                 repeatedCaminhoes = repeated;
+            }
+        }
+        
+        String cidadeOrigem;
+        String cidadeDestino;
+        String veiculo;
+        String condutor;
+        loopCheck = true;
+        double distanciaViagem;
+        int dias;
+        while (loopCheck == true) {
+            repeated = 0;
+            System.out.println("Digite a cidade de origem: ");
+            cidadeOrigem = scanner.next();
+            System.out.println("Digite a cidade de destino: ");
+            cidadeDestino = scanner.next();
+            System.out.println("Digite o veículo: ");
+            veiculo = scanner.next();
+            System.out.println("Digite o condutor: ");
+            condutor = scanner.next();
+            System.out.println("Digite a distância");
+            distancia = scanner.nextDouble();
+            System.out.println("Digite o consumo");
+            consumo = scanner.nextInt();
+            System.out.println("Digite os dias de viagem");
+            dias = scanner.nextInt();
+            System.out.println("Digite o valor do combustivel");
+            valor = scanner.nextDouble();
+            
+            viagens.add(new Viagem(cidadeOrigem,cidadeDestino, veiculo, condutor,distancia,Viagem.custo(consumo, valor, distancia, dias)));
+            repeated++;
+            System.out.println("Adicionar mais um condutor? (true ou false)");
+            loopCheck = scanner.nextBoolean();
+            if (loopCheck == false) {
+                repeatedViagem = repeated;
             }
         }
 
         System.out.println("Relatório dos condutores ordenado por nome: ");
-        Relatorios.imprimeCondutores(condutores, repeatedCondutores + 1);
+        Relatorios.imprimeCondutores(condutores, repeatedCondutores);
         System.out.println("Relatório dos nomes dos veículos em ordem alfabética: ");
-        int repeatedSoma = (repeatedMotos + repeatedCarros + repeatedCaminhoes) + 3;
+        int repeatedSoma = (repeatedMotos + repeatedCarros + repeatedCaminhoes);
         Relatorios.imprimeVeiculos(veiculosNomes, repeatedSoma);
+        System.out.println("Relatório das viagens ordenadas pelo custo: ");
+        Relatorios.imprimeViagens(viagens,repeatedViagem);
         
+        System.out.println("Relatório do total dos salários a pagar para motoristas: ");
+        FolhaDePagamento.imprimir(condutores, repeatedCondutores);
+
     }
 }
