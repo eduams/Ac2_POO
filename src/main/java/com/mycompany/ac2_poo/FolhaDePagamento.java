@@ -14,6 +14,22 @@ import java.util.List;
 public class FolhaDePagamento {
     int mes;
     int ano;
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
     
     static double totalaPagar(List<Condutor> condutores, int repeated){
         double soma=0;

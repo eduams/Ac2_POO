@@ -220,7 +220,7 @@ public class Ac2_POO {
             
             viagens.add(new Viagem(cidadeOrigem,cidadeDestino, veiculo, condutor,distancia,Viagem.custo(consumo, valor, distancia, dias)));
             repeated++;
-            System.out.println("Adicionar mais um condutor? (true ou false)");
+            System.out.println("Adicionar mais uma viagem? (true ou false)");
             loopCheck = scanner.nextBoolean();
             if (loopCheck == false) {
                 repeatedViagem = repeated;
@@ -236,7 +236,9 @@ public class Ac2_POO {
         Relatorios.imprimeViagens(viagens,repeatedViagem);
         
         System.out.println("Relatório do total dos salários a pagar para motoristas: ");
-        FolhaDePagamento.imprimir(condutores, repeatedCondutores);
-
+        FolhaDePagamento novembro2022= new FolhaDePagamento();
+        novembro2022.setAno(2022);
+        novembro2022.setMes(11);
+        novembro2022.imprimir(condutores,repeatedCondutores);
     }
 }

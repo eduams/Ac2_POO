@@ -28,10 +28,10 @@ public class Viagem implements Comparable<Viagem>{
     public static double custo(double consumo, double valor, double distancia, double diasViagem){
 
         if (distancia / diasViagem > 700){
-        System.out.println("Distância maior que 700");
+            System.out.println("Distância inválida - distância diária maior que 700 - assignada para 700km por dia automaticamente");
+            distancia = diasViagem*700;
         }
-        
-        return (valor*(distancia/consumo)) / diasViagem;        
+        return (valor * (distancia / consumo)) / diasViagem;
 }
     @Override
     public String toString() {
